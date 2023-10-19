@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   # Your API routes
   namespace :api do
     namespace :app do
-      ressources :posts
-      ressources :actualities
+      resources :posts
+      resources :actualities
     end
   end
   # root "articles#index"
