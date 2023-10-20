@@ -19,8 +19,6 @@
       <button  @click="editPost(post.id)">Edit</button>
       <button  @click="deletePost(post.id)">Delete</button>
 
-
-
     </div>
     <div v-else>
       <h2>There are no posts already</h2>
@@ -36,7 +34,7 @@
  const posts = ref([]);
  const videoUrl = ref('');
  const post_id = ref(0);
- let isEditing = ref(false)
+ let isEditing = ref(false);
 
  onBeforeMount (async()=> {
   const res = await fetch (API_URL);
@@ -69,11 +67,13 @@
       'Content-Type': 'aplication/json'
     },
     body: JSON.stringify({
-      video_url: videoUrl.value
+      video_url: videoUrl.value,
+      id: post_id.value
     })
   });
-  const data = res;
-  console.log('Post Data: ' + data);
+  const data = await res.json();
+
+  console.log('Post Data: ' + data.$slots);
 
   // Now, check if the 'id' is present in the response data
   if (data.id) {
