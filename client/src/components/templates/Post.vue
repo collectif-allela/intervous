@@ -61,24 +61,28 @@
 
  };
 //  UPDATE POST
- const updatePost = async() => {
-  console.log('Updating Post ID: ' +  post_id.value);
-  const res = await fetch (`${API_URL}/${post_id.value}`, {
+const updatePost = async () => {
+  console.log('Updating Post ID: ' + post_id.value);
+
+  const res = await fetch(`${API_URL}/${post_id.value}`, {
     method: 'PUT',
-    headers : {
-      'Content-Type': 'aplication/json'
+    headers: {
+      'Content-Type': 'application/json' // Fixed typo here (aplication -> application)
     },
     body: JSON.stringify({
       video_url: videoUrl.value
     })
   });
-  const data = res;
-  console.log('Post Data: ' + data);
 
-  // Now, check if the 'id' is present in the response data
+  // Parse the response as JSON
+  const data = await res.json();
+
+  console.log('Response:', res);
+  console.log('Post Data:', data);
+
   if (data.id) {
     const index = posts.value.findIndex(post => post.id === data.id);
-    console.log('Post Index to Update: ' + index);
+    console.log('Post Index to Update:', index);
     posts.value[index] = data;
 
     // Reset data
@@ -89,8 +93,8 @@
     console.error('No "id" in the response data:', data);
     // Handle the case where the "id" is not present in the response.
   }
+};
 
- };
 //  EDIT POST
  const editPost = async(id) => {
 
