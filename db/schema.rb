@@ -10,24 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_151708) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_20_134343) do
   create_table "actualities", force: :cascade do |t|
     t.string "title"
-    t.integer "post_id_id", null: false
     t.text "video_url"
     t.text "body"
     t.text "summary"
     t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id_id"], name: "index_actualities_on_post_id_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "actuality_id"
+    t.integer "user_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "published_at"
+    t.integer "actuality_id"
   end
 
-  add_foreign_key "actualities", "post_ids"
+  add_foreign_key "comments", "actualities"
+  add_foreign_key "posts", "actualities"
 end
