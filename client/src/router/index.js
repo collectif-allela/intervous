@@ -41,9 +41,10 @@ const routes = [
     path: "/post/:id", // View for viewing a single post
     name: "Post",
     component: Post,
+    props: true, // Allows route params to be passed as props
   },
   {
-    path: "/post/:id/create", // View for creating a  post
+    path: "/post/create", // View for creating a  post
     name: "CreatePost",
     component: CreatePost,
   },
@@ -56,6 +57,7 @@ const routes = [
     path: "/actuality/:id/create", // View for create a post
     name : "CreateActuality",
     component: CreateActuality,
+    props: true,
   },
   {
     path: "/actuality/:id/edit", // View for edit a post

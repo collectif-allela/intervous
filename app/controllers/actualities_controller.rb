@@ -20,7 +20,7 @@ class ActualitiesController < ApplicationController
     if @actuality.save
       render json: @actuality, status: :created, location: @actuality
     else
-      render json: @actuality.errors, status: :unprocessable_entity
+      render json: { errors: @actuality.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +46,6 @@ class ActualitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def actuality_params
-      params.require(:actuality).permit(:title, :post_id_id, :video_url, :body, :summary, :tag)
+      params.require(:actuality).permit(:title, :video_url, :body, :summary, :tag, :post_id)
     end
 end

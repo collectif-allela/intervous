@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_20_134343) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_150048) do
   create_table "actualities", force: :cascade do |t|
     t.string "title"
     t.text "video_url"
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_134343) do
     t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_id", null: false
+    t.index ["post_id"], name: "index_actualities_on_post_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -35,9 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_20_134343) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
-    t.integer "actuality_id"
   end
 
+  add_foreign_key "actualities", "posts"
   add_foreign_key "comments", "actualities"
-  add_foreign_key "posts", "actualities"
 end
