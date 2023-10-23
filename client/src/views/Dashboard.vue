@@ -3,7 +3,7 @@
 
     <h1 class="text-2xl font-semibold mb-4">Dashboard</h1>
     <router-link to='/post/create'>
-        <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+        <button class="px-4 py-2 bg-blue text-white rounded-md hover:bg-green-600">
           Create new Post
         </button>
       </router-link>
@@ -15,12 +15,12 @@
           <h2 class="text-lg font-semibold text-black">Video URL: {{ post.video_url }}</h2>
           <div class="space-x-4">
             <router-link :to="{ name: 'Post', params: { id: post.id } }">
-              <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+              <button class="px-4 py-2 bg-blue text-white rounded-md hover:bg-blue">
                 See
               </button>
             </router-link>
             <router-link :to="{ name: 'EditPost', params: { id: post.id } }">
-              <button class="px-4 py-2 bg-yellow-500 text-white rounded-md hover-bg-yellow-600">
+              <button class="pointer px-4 py-2 bg-yellow-500 text-white rounded-md hover-bg-yellow-600">
                 Edit
               </button>
             </router-link>

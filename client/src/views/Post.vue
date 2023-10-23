@@ -15,7 +15,7 @@
         <div class="flex gap-5 align-middle items-center my-10 m">
           <h2 class="font-bold">Actualities</h2>
           <router-link :to="{ name: 'CreateActuality',  params: { id: post.id } }">
-              <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+              <button class="px-4 py-2 bg-blue text-white rounded-md hover:bg-green-600">
                 Add Actuality
               </button>
             </router-link>
@@ -43,7 +43,14 @@
               <p class="text-gray-600">{{ actuality.summary }}</p>
               <p class="text-gray-600">{{ actuality.body }}</p>
               <p class="text-gray-600">{{ actuality.tag }}</p>
-
+              <router-link :to="{ name: 'EditActuality', params: { id: post.id } }">
+              <button class="pointer px-4 py-2 bg-yellow-500 text-white rounded-md hover-bg-yellow-600">
+                Edit
+              </button>
+            </router-link>
+              <button @click="deleteActuality(actuality.id)" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
+              Delete
+            </button>
             </div>
           </div>
         </div>
@@ -100,6 +107,16 @@ export default {
         console.error('Error fetching actualities:', error);
       }
     },
+    async deleteActuality(actualityId) {
+      try {
+        // Use Axios to delete the post
+        await this.$axios.delete(`/actualities/${actualityId}`);
+        // Update the posts array to remove the deleted post
+        this.post.actualities = this.post.actualities.filter(actuality => actuality.id !== actualityId);
+      } catch (error) {
+        console.error('Error deleting post:', error);
+      }
+    }
   },
 };
 </script>

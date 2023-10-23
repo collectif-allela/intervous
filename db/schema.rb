@@ -39,9 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_150048) do
     t.datetime "published_at"
   end
 
-<<<<<<< HEAD
-  add_foreign_key "actualities", "posts"
-=======
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -67,6 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_150048) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
->>>>>>> 9d04a4682609651392564bb5299c3366e6cfd58a
+  add_foreign_key "actualities", "posts"
   add_foreign_key "comments", "actualities"
 end
