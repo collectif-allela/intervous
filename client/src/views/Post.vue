@@ -39,11 +39,13 @@
           <!-- Tab Content -->
           <div class="p-4">
             <div v-for="(actuality, index) in post.actualities" :key="index" v-show="activeTab === index">
+              <p class="text-gray-600">{{ actuality.id }}</p>
               <h2 class="text-lg font-bold mb-2">{{ actuality.title }}</h2>
               <p class="text-gray-600">{{ actuality.summary }}</p>
               <p class="text-gray-600">{{ actuality.body }}</p>
               <p class="text-gray-600">{{ actuality.tag }}</p>
-              <router-link :to="{ name: 'EditActuality', params: { id: post.id } }">
+              <p class="text-gray-600">{{ actuality.post_id }}</p>
+              <router-link :to="{ name: 'EditActuality', params: { post_id: post.id, id: actuality.id } }">
               <button class="pointer px-4 py-2 bg-yellow-500 text-white rounded-md hover-bg-yellow-600">
                 Edit
               </button>
@@ -78,13 +80,12 @@ export default {
     };
   },
   created() {
-    this.fetchPost();
-    this.fetchActualities(this.id); // Use "this.id" to access the prop
+    this.fetchPost(this.id);
+    this.fetchActualities(this.id); // Use "this.id" to access the prop post_id
   },
   methods: {
-    async fetchPost() {
+    async fetchPost(postId) {
       try {
-        const postId = this.id;
         const response = await this.$axios.get(`/posts/${postId}`);
         this.post = response.data;
         this.loading = false;
@@ -94,19 +95,16 @@ export default {
     },
     async fetchActualities(postId) {
       try {
-        const response = await this.$axios.get('/actualities', {
-          params: {
-            postId: postId,
-          },
-        });
-        this.post.actualities = response.data; // Update post's actualities property
-        if (this.post.actualities.length === 0){
+        const response = await this.$axios.get(`/actualities?post_id=${postId}`);
+        this.post.actualities = response.data;
+        if (this.post.actualities.length === 0) {
           this.loading = false;
-        };
+        }
       } catch (error) {
         console.error('Error fetching actualities:', error);
       }
     },
+
     async deleteActuality(actualityId) {
       try {
         // Use Axios to delete the post

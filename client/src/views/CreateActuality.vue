@@ -50,11 +50,11 @@ created() {
     async createActuality() {
       try {
         const response = await axios.post(`${this.baseUrl}/actualities`, this.actualityData); // Replace with your API endpoint
-        console.log('Post created:', response.data);
-        // Optionally, you can handle the response, e.g., show a success message or navigate to the Dashboard
-        window.alert('Actuality created');
+        // console.log('Post created:', response.data);
+        // // Optionally, you can handle the response, e.g., show a success message or navigate to the Dashboard
+        // window.alert('Actuality created');
         // Redirect to the dashboard view
-        this.$router.push({ name: 'dashboard' });
+        this.$router.push({ name: 'Post', params: { id: this.id } });
       } catch (error) {
         console.error('Error creating actuality:', error);
       }

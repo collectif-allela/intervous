@@ -3,7 +3,11 @@ class ActualitiesController < ApplicationController
 
   # GET /actualities
   def index
-    @actualities = Actuality.all
+    if params[:post_id].present?
+      @actualities = Actuality.where(post_id: params[:post_id])
+    else
+      @actualities = Actuality.all
+    end
 
     render json: @actualities
   end
@@ -46,6 +50,6 @@ class ActualitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def actuality_params
-      params.require(:actuality).permit(:title, :video_url, :body, :summary, :tag, :post_id)
+      params.require(:actuality).permit(:id, :updated_at, :created_at, :title, :video_url, :body, :summary, :tag, :post_id)
     end
 end

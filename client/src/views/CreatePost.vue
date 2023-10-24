@@ -28,7 +28,7 @@ export default {
       try {
         const response = await axios.post(`${this.baseUrl}/posts`, this.postData); // Replace with your API endpoint
         // Optionally, you can handle the response, e.g., show a success message or navigate to the Dashboard
-        console.log('Post created:', response.data);
+        // console.log('Post created:', response.data);
         this.$router.push({ name: 'Dashboard' });
 
       } catch (error) {

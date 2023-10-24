@@ -54,15 +54,16 @@ const routes = [
     component: EditPost,
   },
   {
-    path: "/actuality/:id/create", // View for create a post
+    path: "/actuality/:id/create", // View for create an actuality
     name : "CreateActuality",
     component: CreateActuality,
     props: true,
   },
   {
-    path: "/actuality/:id/edit", // View for edit a post
+    path: "/post/:post_id/actuality/:id/edit", // View for edit an actuality
     name : "EditActuality",
     component: EditActuality,
+    props: true,
   }
 ];
 
