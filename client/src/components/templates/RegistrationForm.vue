@@ -1,9 +1,3 @@
-<!-- <script setup>
-import RegistrationForm from '../components/templates/RegistrationForm.vue';
-</script>
-<template>
-  <RegistrationForm/>
-</template> -->
 <template>
   <form @submit.prevent="registerUser" class="flex flex-col max-w-lg">
     <label for="email">Email:</label>
@@ -22,7 +16,6 @@ import RegistrationForm from '../components/templates/RegistrationForm.vue';
 
 <script>
 import axios from 'axios';
-import querystring from 'querystring';
 
 export default {
   data() {
@@ -39,18 +32,11 @@ export default {
   methods: {
     async registerUser() {
     try {
-      
-      console.log(this.user);
-
-      const response = await axios.post('/api/app/auth', this.user, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    });
+      const response = await axios.post('http://localhost:3000/api/app/auth', this.user)
 
       console.log(response);
       // Check if the registration was successful based on the API response
-      if (response.status === 200) {
+      if (response.status === 201) {
         // Registration successful, you can redirect the user or show a success message
         console.log('Registration successful');
         // Redirect to a new page or show a success message

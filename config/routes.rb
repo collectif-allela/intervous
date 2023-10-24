@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
-  resources :comments
-  resources :actualities
-  resources :posts
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # Your API routes
   namespace :api do
     namespace :app do
       # User Registration
       mount_devise_token_auth_for 'User', at: 'auth'
+      resources :users
       # User Login
       post 'auth/sign_in', to: 'user_token#create'
       # User Logout (Destroy Token)

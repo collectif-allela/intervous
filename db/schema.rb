@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_23_150048) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_145107) do
   create_table "actualities", force: :cascade do |t|
     t.string "title"
     t.text "video_url"
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_150048) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
+    t.string "cover_img_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_150048) do
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
