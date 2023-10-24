@@ -1,25 +1,25 @@
-<template class="App w-full bg-black">
-  <div id="nav" class=" w-full fixed bottom-0 flex justify-center p-4 bg-gray-800">
-    <router-link
-      to="/"
-      class="text-white font-semibold hover:text-blue-400 px-2 py-1 mx-2"
-    >
-      Home
-    </router-link>
+<template class="App w-full">
+  <div id="nav" class=" w-full bg-beige sticky top-0 flex justify-evenly p-4 ">
     <router-link
       to="/account"
-      class="text-white font-semibold hover:text-blue-400 px-2 py-1 mx-2"
+      class="text-black font-semibold hover:text-blue-400 px-2 py-1 mx-2"
     >
       Account
     </router-link>
     <router-link
-      to="/dashboard"
-      class="text-white font-semibold hover:text-blue-400 px-2 py-1 mx-2"
+      to="/"
+      class="text-black font-semibold hover:text-blue-400 px-2 py-1 mx-2"
     >
-      Dashboard
+      Home
+    </router-link>
+    <router-link
+      to="/search"
+      class="text-black font-semibold hover:text-blue-400 px-2 py-1 mx-2"
+    >
+      Search
     </router-link>
   </div>
-  <router-view class="p-4" />
+  <router-view class="p-4 bg-beige" />
 </template>
 
 <script setup>
