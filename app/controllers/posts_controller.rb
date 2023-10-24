@@ -3,8 +3,15 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all
-
+    if params[:created_at].present?
+      date = Date.parse(params[:created_at])
+      start_of_day = date.beginning_of_day
+      end_of_day = date.end_of_day
+      @posts = Post.where(created_at: start_of_day..end_of_day)
+      # @posts = Post.where(created_at: params[:created_at])
+    else
+      @posts = Post.all
+    end
     render json: @posts
   end
 
