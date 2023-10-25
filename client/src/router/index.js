@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "../views/Home.vue";
 import Account from "../views/Account.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Gallery from "../views/Gallery.vue";
 import Post from "../views/Post.vue";
 import Register from "../views/Register.vue";
 import Connection from "../views/Connection.vue";
@@ -26,6 +27,11 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
+  },
+  {
+    path: "/gallery",
+    name: "Gallery",
+    component: Gallery,
   },
   {
     path: "/register",
