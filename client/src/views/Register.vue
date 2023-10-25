@@ -1,23 +1,32 @@
-<!-- <script setup>
-import RegistrationForm from '../components/templates/RegistrationForm.vue';
-</script>
 <template>
-  <RegistrationForm/>
-</template> -->
-<template>
-  <form @submit.prevent="registerUser" class="flex flex-col max-w-lg">
-    <label for="email">Email:</label>
-    <input class="text-black" type="email" id="email" v-model="user.email" required>
-    <label for="name">Name:</label>
-    <input class="text-black" type="text" id="name" v-model="user.name" required>
-    <label for="nickname">Nickname:</label>
-    <input class="text-black" type="text" id="nickname" v-model="user.nickname" required>
-    <label for="password">Password</label>
-    <input class="text-black" type="text" id="password" v-model="user.password" required>
-    <label for="password_confirmation">password_confirmation</label>
-    <input class="text-black" type="text" id="password_confirmation" v-model="user.password_confirmation" required>
-    <button type="submit">Submit</button>
-  </form>
+  <section class="relative mx-auto h-[800px] w-[390px]">
+    <div class="h-full w-full bg-beige">
+      <div class="flex h-full flex-col justify-center">
+        <div class="mx-auto mb-10">
+          <h1 class="inline-block bg-blue px-3 text-2xl uppercase italic text-beige">Inscription</h1>
+        </div>
+        <form @submit.prevent="registerUser" class="mx-6 flex max-w-lg flex-col gap-y-3">
+          <div>
+            <label for="email" class="mb-1 text-sm uppercase italic">Pseudo</label>
+            <input class="w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="nickname" id="nickname" v-model="user.nickname" required />
+          </div>
+          <div>
+            <label for="email" class="mb-1 text-sm uppercase italic">Email</label>
+            <input class="w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="email" id="email" v-model="user.email" required />
+          </div>
+          <div>
+            <label for="email" class="mb-1 text-sm uppercase italic">Mot de passe</label>
+            <input class="w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="password" id="password" v-model="user.password" required />
+          </div>
+          <div>
+            <label for="email" class="mb-1 text-sm uppercase italic">Confirmation mot de passe</label>
+            <input class="mb-4 w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="password" id="password_confirmation" v-model="user.password_confirmation" required />
+          </div>
+          <button class="border border-black mx-auto inline-block bg-blue px-6 py-1 uppercase italic text-beige" type="submit">S'iscrire</button>
+        </form>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
