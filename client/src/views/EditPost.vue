@@ -9,7 +9,7 @@
       <label for="videoUrl">Posted Date</label>
       <input type="date" id="published_at" v-model="postData.published_at" class="cursor text-black mb-3" >
       <button type="submit" class="px-4 w-fit py-2 bg-blue text-white rounded-md hover:bg-green-600">
-          Create new Post
+          Confirm
         </button>
     </form>
   </div>

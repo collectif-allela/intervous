@@ -1,1 +1,0 @@
-//mobile layout : max-w-500px and max-h-900px
