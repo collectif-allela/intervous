@@ -54,7 +54,7 @@ export default {
       try {
         // const formattedDate = new Date(this.selectedDate).toISOString();
         console.log("Selected Date: " + this.selectedDate);
-        const response = await this.$axios.get(`/posts`, {
+        const response = await this.$axios.get(`/api/app/posts`, {
           params: { created_at: this.selectedDate },
         });
         this.post = response.data[0];
@@ -67,7 +67,7 @@ export default {
     async fetchActualities() {
       try {
         const postId = this.post.postId;
-        const response = await this.$axios.get(`/actualities?post_id=${postId}`);
+        const response = await this.$axios.get(`/api/app/actualities?post_id=${postId}`);
         console.log(response);
         console.log('Response on fetchActualities: ' + response.data);
         console.log('Type of response: ' + typeof(response.data));

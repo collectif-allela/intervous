@@ -48,7 +48,7 @@ export default {
   methods: {
     async fetchPosts() {
       try {
-        const response = await this.$axios.get('/posts'); // Replace with your API endpoint
+        const response = await this.$axios.get('/api/app/posts'); // Replace with your API endpoint
         this.posts = response.data;
         this.loading = false;
       } catch (error) {
