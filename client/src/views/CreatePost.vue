@@ -20,13 +20,12 @@ export default {
       postData: {
         video_url: ''
       },
-      baseUrl : 'http://localhost:3000'
     };
   },
   methods: {
     async createPost() {
       try {
-        const response = await axios.post(`${this.baseUrl}/posts`, this.postData); // Replace with your API endpoint
+        const response = await axios.post(`/api/app/posts`, this.postData); // Replace with your API endpoint
         // Optionally, you can handle the response, e.g., show a success message or navigate to the Dashboard
         // console.log('Post created:', response.data);
         this.$router.push({ name: 'Dashboard' });

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :app do
+
+      resources :comments
+      resources :posts
+      resources :actualities
+
       # User Registration
       mount_devise_token_auth_for 'User', at: 'auth'
       resources :users
@@ -10,10 +15,6 @@ Rails.application.routes.draw do
       delete 'auth/sign_out', to: 'user_token#destroy'
       # Token Validation
       get 'auth/validate_token', to: 'user_token#validate_token'
-
-      resources :comments
-      resources :posts
-      resources :actualities
     end
   end
   # root "articles#index"

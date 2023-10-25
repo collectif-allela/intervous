@@ -1,4 +1,4 @@
-class ActualitiesController < ApplicationController
+class Api::App::ActualitiesController < ApplicationController
   before_action :set_actuality, only: %i[ show update destroy ]
 
   # GET /actualities

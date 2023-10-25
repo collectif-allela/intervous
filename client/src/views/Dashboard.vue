@@ -58,7 +58,7 @@ export default {
     async deletePost(postId) {
       try {
         // Use Axios to delete the post
-        await this.$axios.delete(`/posts/${postId}`);
+        await this.$axios.delete(`api/app/posts/${postId}`);
 
         // Update the posts array to remove the deleted post
         this.posts = this.posts.filter(post => post.id !== postId);

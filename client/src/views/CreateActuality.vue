@@ -33,7 +33,6 @@ export default {
         tag: '',
         post_id: null,
       },
-      baseUrl : 'http://localhost:3000'
     };
   },
   computed: {
@@ -49,7 +48,7 @@ created() {
   methods: {
     async createActuality() {
       try {
-        const response = await axios.post(`${this.baseUrl}/actualities`, this.actualityData); // Replace with your API endpoint
+        const response = await axios.post(`api/app/actualities`, this.actualityData); // Replace with your API endpoint
         // console.log('Post created:', response.data);
         // // Optionally, you can handle the response, e.g., show a success message or navigate to the Dashboard
         // window.alert('Actuality created');

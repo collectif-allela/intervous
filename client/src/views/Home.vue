@@ -54,7 +54,7 @@ export default {
       try {
         // const formattedDate = new Date(this.selectedDate).toISOString();
         console.log("Selected Date: " + this.selectedDate);
-        const response = await this.$axios.get(`/api/app/posts`, {
+        const response = await this.$axios.get('api/app/posts', {
           params: { created_at: this.selectedDate },
         });
         this.post = response.data[0];

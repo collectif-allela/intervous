@@ -86,7 +86,7 @@ export default {
   methods: {
     async fetchPost(postId) {
       try {
-        const response = await this.$axios.get(`/posts/${postId}`);
+        const response = await this.$axios.get(`/api/app/posts/${postId}`);
         this.post = response.data;
         this.loading = false;
       } catch (error) {
@@ -95,7 +95,7 @@ export default {
     },
     async fetchActualities(postId) {
       try {
-        const response = await this.$axios.get(`/actualities?post_id=${postId}`);
+        const response = await this.$axios.get(`/api/app/actualities?post_id=${postId}`);
         this.post.actualities = response.data;
         if (this.post.actualities.length === 0) {
           this.loading = false;
@@ -108,7 +108,7 @@ export default {
     async deleteActuality(actualityId) {
       try {
         // Use Axios to delete the post
-        await this.$axios.delete(`/actualities/${actualityId}`);
+        await this.$axios.delete(`/api/app/actualities/${actualityId}`);
         // Update the posts array to remove the deleted post
         this.post.actualities = this.post.actualities.filter(actuality => actuality.id !== actualityId);
       } catch (error) {

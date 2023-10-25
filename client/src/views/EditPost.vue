@@ -20,7 +20,6 @@ export default {
       postData: {
         video_url: '',
       },
-      baseUrl: 'http://localhost:3000',
     };
   },
   created() {
@@ -32,7 +31,7 @@ export default {
       try {
         // Replace this with an API call to fetch the post data to be edited
         const postId = this.$route.params.id; // Assuming you're using Vue Router
-        const response = await axios.get(`${this.baseUrl}/posts/${postId}`);
+        const response = await axios.get(`/api/app/posts/${postId}`);
         this.postData = response.data; // Update postData with the fetched post data
       } catch (error) {
         console.error('Error fetching post data:', error);
@@ -41,7 +40,7 @@ export default {
     async updatePost() {
       try {
         const postId = this.$route.params.id; // Assuming you're using Vue Router
-        const response = await axios.put(`${this.baseUrl}/posts/${postId}`, this.postData);
+        const response = await axios.put(`/api/app/posts/${postId}`, this.postData);
         // Optionally, you can handle the response, e.g., show a success message or navigate back to the Dashboard
         console.log('Post updated:', response.data);
         this.$router.push({ name: 'Dashboard' });

@@ -37,7 +37,6 @@ export default {
         tag: '',
         post_id: null,
       },
-      baseUrl: 'http://localhost:3000',
     };
   },
   computed: {
@@ -60,7 +59,7 @@ export default {
 
         // Replace this with an API call to fetch the actuality data to be edited
         const actualityId = this.$route.params.id; // Assuming you're using Vue Router
-        const response = await axios.get(`${this.baseUrl}/actualities/${actualityId}`, {
+        const response = await axios.get(`api/app/actualities/${actualityId}`, {
           params: {
             post_id: actualityPostId,
           },
@@ -74,7 +73,7 @@ export default {
       try {
         const actualityPostId = this.post_id;
         const actualityId = this.$route.params.id; // Assuming you're using Vue Router
-        const response = await axios.put(`${this.baseUrl}/actualities/${actualityId}`, this.actualityData,  {
+        const response = await axios.put(`api/app/actualities/${actualityId}`, this.actualityData,  {
           params: {
             postId: actualityPostId,
           },
