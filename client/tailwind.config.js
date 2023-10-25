@@ -19,6 +19,7 @@ export default {
       colors: {
         beige: '#FBF0DF',
         blue: '#4E7DDB',
+        black: '#2D2D2D'
       },
     },
   },

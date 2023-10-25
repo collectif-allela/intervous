@@ -4,7 +4,7 @@
     class="text-black w-full text-center p-1 bg-beige border border-solid border-black"/>
     <div v-if="post" class="justify-center flex flex-col gap-4">
       <h1 class="text-center ">Today's Post</h1>
-      <MainVideo></MainVideo>
+      <MainVideo :date = "post.video_date"></MainVideo>
       <p>{{ post.video_url }}</p>
       <!-- Actualities Tabs -->
       <div v-if="post.actualities && post.actualities.length > 0">
@@ -12,7 +12,7 @@
           :actualities="post.actualities"
           :activeTab="activeTab"
           :post="post"
-          :canDelete="userHasPermissionToDelete"
+          :canModify="isAdmin"
           @tab-click="activeTab = $event"
           @delete-actuality="deleteActuality($event)"
         ></actualities-tab>
@@ -38,15 +38,17 @@ export default {
   },
   data() {
     return {
-      userHasPermissionToDelete: false,
+      isAdmin: false,
       post: {
         created_at: '', // Define default values for properties you access
         video_url: '',
+        video_date:'',
         postId: null,
         actualities: [],
 
       },
-      selectedDate: new Date().toISOString().substr(0, 10), // Initialize with today's date
+      selectedDate: new Date().toISOString().substr(0, 10),
+      activeTab: 0, // Initialize with today's date
     };
   },
   methods: {
@@ -54,7 +56,7 @@ export default {
       try {
         // const formattedDate = new Date(this.selectedDate).toISOString();
         console.log("Selected Date: " + this.selectedDate);
-        const response = await this.$axios.get('api/app/posts', {
+        const response = await this.$axios.get('/api/app/posts', {
           params: { created_at: this.selectedDate },
         });
         this.post = response.data[0];
@@ -82,12 +84,21 @@ export default {
     async fetchData() {
     console.log("Fetching Data...");
     await this.fetchPosts(); // Wait for fetchPosts to complete before proceeding
-    this.fetchActualities();
+    await this.fetchActualities();
+    this.transformDate(this.selectedDate);
+
+    },
+    async transformDate(date) {
+      const day = date.substring(8, 10);
+      const month = date.substring(5, 7);
+      // Return the formatted date
+      this.post.video_date = `${day}/${month}`;
+      console.log("Video date passed: " + this.post.video_date)
     },
   },
   mounted() {
     this.fetchData();
-  },
+  }
   // computed: {
   //   userHasPermissionToDelete() {
   //     // Implement your permission logic here
