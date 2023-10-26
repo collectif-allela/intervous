@@ -7,9 +7,9 @@
       <MainVideo :date = "post.video_date"></MainVideo>
       <p>{{ post.video_url }}</p>
       <!-- Actualities Tabs -->
-      <div v-if="post.actualities && post.actualities.length > 0">
-        <actualities-tab
-          :actualities="post.actualities"
+      <div v-if="actualities && actualities.length > 0">
+          <actualities-tab
+          :actualities="actualities"
           :activeTab="activeTab"
           :post="post"
           :canModify="isAdmin"
@@ -19,8 +19,7 @@
       </div>
       <div v-else>
       <h2>There are no post actualities or there is a problem.</h2>
-    </div>
-
+      </div>
     </div>
     <div v-else>
       <h2>There are no posts for this date, choose another one</h2>
@@ -33,20 +32,21 @@ import MainVideo from '../components/ui/MainVideo.vue';
 import ActualitiesTab from '../components/templates/ActualitiesTab.vue'
 export default {
   components: {
-    MainVideo, // Register the video component
+    MainVideo,
     ActualitiesTab,
-  },
+
+},
   data() {
     return {
+      loading: true,
       isAdmin: false,
       post: {
         created_at: '', // Define default values for properties you access
         video_url: '',
         video_date:'',
         postId: null,
-        actualities: [],
-
       },
+      actualities: [],
       selectedDate: new Date().toISOString().substr(0, 10),
       activeTab: 0, // Initialize with today's date
     };
@@ -55,7 +55,6 @@ export default {
     async fetchPosts() {
       try {
         // const formattedDate = new Date(this.selectedDate).toISOString();
-        console.log("Selected Date: " + this.selectedDate);
         const response = await this.$axios.get('/api/app/posts', {
           params: { created_at: this.selectedDate },
         });
@@ -70,23 +69,11 @@ export default {
       try {
         const postId = this.post.postId;
         const response = await this.$axios.get(`/api/app/actualities?post_id=${postId}`);
-        console.log(response);
-        console.log('Response on fetchActualities: ' + response.data);
-        console.log('Type of response: ' + typeof(response.data));
-        this.post.actualities = response.data;
-        if (this.post.actualities.length === 0) {
-          this.loading = false;
-        }
+        this.actualities = response.data;
+        console.log(this.actualities.length)
       } catch (error) {
         console.error('Error fetching actualities:', error);
       }
-    },
-    async fetchData() {
-    console.log("Fetching Data...");
-    await this.fetchPosts(); // Wait for fetchPosts to complete before proceeding
-    await this.fetchActualities();
-    this.transformDate(this.selectedDate);
-
     },
     async transformDate(date) {
       const day = date.substring(8, 10);
@@ -95,6 +82,23 @@ export default {
       this.post.video_date = `${day}/${month}`;
       console.log("Video date passed: " + this.post.video_date)
     },
+    async fetchData() {
+      console.log("Fetching Data...");
+      try {
+        console.log("Fetching Post...");
+        await this.fetchPosts();
+        console.log("Fetching Actualities...");
+
+        await this.fetchActualities();
+        console.log("Setting Date...");
+        await this.transformDate(this.selectedDate);
+        // this.loading = false;
+        console.log("Actualities after fetchData: " + this.actualities);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+
   },
   mounted() {
     this.fetchData();

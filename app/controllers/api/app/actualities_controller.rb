@@ -22,7 +22,7 @@ class Api::App::ActualitiesController < ApplicationController
     @actuality = Actuality.new(actuality_params)
 
     if @actuality.save
-      render json: @actuality, status: :created, location: @actuality
+      render json: @actuality, status: :created
     else
       render json: { errors: @actuality.errors.full_messages }, status: :unprocessable_entity
     end

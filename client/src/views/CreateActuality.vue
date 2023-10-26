@@ -6,12 +6,12 @@
       <input type="text" id="title" v-model="actualityData.title" class="text-black">
       <label for="summary">Summary:</label>
       <input type="text" id="summary" v-model="actualityData.summary" class="text-black">
-      <label for="body">Body:</label>
-      <input type="text" id="body" v-model="actualityData.body" class="text-black">
-      <label for="videoUrl">Video Url:</label>
+      <!-- <label for="body">Body:</label>
+      <input type="text" id="body" v-model="actualityData.body" class="text-black"> -->
+      <!-- <label for="videoUrl">Video Url:</label>
       <input type="text" id="videoUrl" v-model="actualityData.video_url" class="text-black">
       <label for="tag">Tag:</label>
-      <input type="text" id="tag" v-model="actualityData.tag" class="text-black">      <button type="submit">Create Actuality</button>
+      <input type="text" id="tag" v-model="actualityData.tag" class="text-black">      <button type="submit">Create Actuality</button> -->
     </form>
   </div>
 </template>
@@ -48,11 +48,12 @@ created() {
   methods: {
     async createActuality() {
       try {
-        const response = await axios.post(`api/app/actualities`, this.actualityData); // Replace with your API endpoint
+        const response = await axios.post(`/api/app/actualities`, this.actualityData); // Replace with your API endpoint
         // console.log('Post created:', response.data);
         // // Optionally, you can handle the response, e.g., show a success message or navigate to the Dashboard
         // window.alert('Actuality created');
         // Redirect to the dashboard view
+        console.error('NO error in response', error);
         this.$router.push({ name: 'Post', params: { id: this.id } });
       } catch (error) {
         console.error('Error creating actuality:', error);

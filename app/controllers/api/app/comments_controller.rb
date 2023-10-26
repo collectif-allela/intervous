@@ -3,7 +3,11 @@ class Api::App::CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all
+    if params[:actuality_id].present?
+      @comments = Comment.where(actuality_id: params[:actuality_id])
+    else
+      @comments = Comment.all
+    end
 
     render json: @comments
   end
@@ -18,7 +22,7 @@ class Api::App::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      render json: @comment, status: :created, location: @comment
+      render json: @comment, status: :created #, location: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
@@ -46,6 +50,6 @@ class Api::App::CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:thread_id, :user_id, :body, :status)
+      params.require(:comment).permit(:actuality_id, :user_id, :body, :status)
     end
 end

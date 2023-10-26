@@ -1,19 +1,19 @@
-<template >
-  <div class="comment-box flex h-fit w-full border border-solid border-black">
-    <div class="flex items-center space-x-4 p-4">
+<template>
+  <div class="comment-box h-fit w-full border-b border-black">
+    <div class="flex items-center space-x-4 px-4">
       <!-- Profile Image -->
-      <div class="h-16 w-16 overflow-hidden rounded-full">
-        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="User Profile Image" />
+      <div class="h-12 w-12 overflow-hidden rounded-full">
+        <img :src="profileImage" alt="User Profile Image" />
       </div>
 
       <!-- Comment Body -->
       <div class="flex-1 justify-evenly">
         <div class="rounded-lg p-4">
           <div class="flex w-fit gap-2">
-            <h3 class="text-bold font-bold uppercase italic">Dedecito</h3>
-            <p class="italic text-gray-400">- 2 minutes ago</p>
+            <h3 class="text-bold font-bold uppercase italic">{{ userName }}</h3>
+            <p class="italic text-gray-400">{{ timestamp }}</p>
           </div>
-          <p class="text-gray-800">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque odio ac justo vestibulum, nec dictum arcu ultrices.</p>
+          <p class="text-gray-800">{{ commentText }}</p>
           <div class="mt-4 flex w-full justify-between">
             <button class="mx-2 flex items-center gap-2 text-gray-600 hover:text-blue">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,8 +39,14 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
-
-}
+  props: {
+    profileImage: URL, // URL to the user's profile image
+    //userName: String, // User's name
+    timestamp: String, // Timestamp of the comment
+    commentText: String, // Comment text
+  },
+};
 </script>
