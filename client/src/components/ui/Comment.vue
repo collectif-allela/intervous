@@ -50,7 +50,6 @@ export default {
       userVoted: false, // Set this to true if the user has already liked the comment
     };
   },
-  components: {Like, Dislike},
   props: {
     commentId: Number,
     profileImage: URL, // URL to the user's profile image
@@ -58,6 +57,8 @@ export default {
     timestamp: String, // Timestamp of the comment
     commentText: String, // Comment text
   },
+  components: {Like, Dislike},
+
   mounted() {
     this.fetchLikes();
     this.fetchDisLikes();

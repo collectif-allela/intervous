@@ -11,7 +11,8 @@
       <!-- <label for="videoUrl">Video Url:</label>
       <input type="text" id="videoUrl" v-model="actualityData.video_url" class="text-black">
       <label for="tag">Tag:</label>
-      <input type="text" id="tag" v-model="actualityData.tag" class="text-black">      <button type="submit">Create Actuality</button> -->
+      <input type="text" id="tag" v-model="actualityData.tag" class="text-black">       -->
+      <button class=" w-fit px-4 py-2 bg-blue text-white rounded-md hover:bg-blue">Create Actuality</button>
     </form>
   </div>
 </template>
@@ -49,12 +50,14 @@ created() {
     async createActuality() {
       try {
         const response = await axios.post(`/api/app/actualities`, this.actualityData); // Replace with your API endpoint
-        // console.log('Post created:', response.data);
-        // // Optionally, you can handle the response, e.g., show a success message or navigate to the Dashboard
-        // window.alert('Actuality created');
-        // Redirect to the dashboard view
-        console.error('NO error in response', error);
-        this.$router.push({ name: 'Post', params: { id: this.id } });
+        if (response.data){
+          console.log('Post created:', response.data);
+          this.$router.push({ name: 'Post', params: { id: this.actualityData.post_id } });
+
+        } else {
+          console.log('Error in actuality creation');
+
+        }
       } catch (error) {
         console.error('Error creating actuality:', error);
       }
