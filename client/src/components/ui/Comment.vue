@@ -14,20 +14,14 @@
             <p class="italic text-gray-400">{{ timestamp }}</p>
           </div>
           <p class="text-gray-800">{{ commentText }}</p>
-          <div class="mt-4 flex w-full justify-between">
-            <span>Likes:{{likes}}</span>
-            <button @click="likeComment" class="mx-2 flex items-center gap-2 text-gray-600 hover:text-blue">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              Like
+          <div class="mt-4 flex w-full justify-between items-center">
+            <span>{{likes}}</span>
+            <button @click="likeComment" class="mx-2 flex items-center gap-2" :class="likeButtonClass">
+              <Like :fillColor="likeFillColor"/>
             </button>
-            <span>Dislikes:{{dislikes}}</span>
-            <button @click="unlikeComment" class="mr-2 flex items-center gap-2 text-gray-600 hover:text-red-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-              Dislike
+            <span>{{dislikes}}</span>
+            <button @click="unlikeComment" :fillColor="dislikeFillColor" class="mr-2 flex items-center gap-2 " :class="dislikeButtonClass">
+              <Dislike/>
             </button>
           </div>
         </div>
@@ -37,6 +31,8 @@
 </template>
 
 <script>
+import Like from '../../assets/Like.vue';
+import Dislike from '../../assets/Dislike.vue'
 export default {
   data() {
     return {
@@ -49,9 +45,12 @@ export default {
       },
       likes: '',
       dislikes: '',
+      likeFillColor: 'gray', // Initial fill color for Like button // Initial class for Like button
+      dislikeFillColor: 'gray', // Initial class for Dislike button
       userVoted: false, // Set this to true if the user has already liked the comment
     };
   },
+  components: {Like, Dislike},
   props: {
     commentId: Number,
     profileImage: URL, // URL to the user's profile image
@@ -124,6 +123,8 @@ export default {
   if (!this.userVoted) {
     // Make an API call to like the comment
     try {
+      // Update the fill color for the Like button
+      this.likeFillColor = 'red';
       this.data.vote_type = 'like';
 
       const response = await this.$axios.post(`api/app/votes`, this.data);
@@ -166,6 +167,7 @@ export default {
       if (!this.userVoted) {
         // Make an API call to like the comment
         try {
+          this.dislikeFillColor = 'blue';
           this.data.vote_type = 'dislike';
           const response = await this.$axios.post(`api/app/votes`, this.data);
 
