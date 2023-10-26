@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.2"
+ruby "3.0.6"
 
 gem "rails", "~> 7.0.8"
 
@@ -25,4 +25,3 @@ end
 group :development do
 
 end
-
