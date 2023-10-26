@@ -1,5 +1,6 @@
 
 class Api::App::PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:authenticated_action]
   before_action :set_post, only: %i[ show update destroy ]
 
   # GET /posts

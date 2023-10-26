@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-<div class="w-full flex justify-center mt-6">
+<div class="w-full flex justify-center mt-10">
   <logo/>
 </div>
 <section class="mx-auto relative max-w-[390px]">

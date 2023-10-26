@@ -1,5 +1,8 @@
 <template>
-  <div class="h-full w-full justify-center flex flex-col gap-4">
+  <div class="h-full w-full justify-center flex flex-col gap-y-4">
+    <div class="w-full flex items-center justify-center mb-3 mt-10">
+      <Logo/>
+    </div>
     <input type="date" v-model="selectedDate" @change="fetchData"
     class="text-black w-full text-center p-1 bg-beige border border-solid border-black"/>
     <div v-if="post" class="justify-center flex flex-col gap-4">
@@ -30,10 +33,12 @@
 <script>
 import MainVideo from '../components/ui/MainVideo.vue';
 import ActualitiesTab from '../components/templates/ActualitiesTab.vue'
+import Logo from '../assets/logo.vue';
 export default {
   components: {
     MainVideo,
     ActualitiesTab,
+    Logo
 
 },
   data() {

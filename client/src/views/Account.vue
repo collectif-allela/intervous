@@ -1,4 +1,7 @@
 <template>
+  <div class="flex items-center justify-center mt-10 mb-10">
+    <logo />
+  </div>
   <section class="mx-auto relative max-w-[390px]">
     <div class="flex h-full flex-col">
       <div class="flex h-full flex-col">
@@ -36,7 +39,7 @@
         </ul>
       </div>
       <div class="flex h-full items-end">
-        <button class="w-full border border-black p-5 text-start uppercase">Déconexion</button>
+        <button  @click="logout" class="w-full border border-black p-5 text-start uppercase">Déconexion</button>
       </div>
     </div>
   </section>
@@ -44,9 +47,11 @@
 
 <script>
 import axios from 'axios';
+import logo from '../assets/logo.vue';
 import querystring from 'querystring';
 
 export default {
+  components: { logo },
   data() {
     return {
       user : {
@@ -59,6 +64,20 @@ export default {
     }
   },
   methods: {
+
+    logout() {
+      // Make an API request to the logout endpoint
+      axios.delete('/api/app/auth/sign_out')
+        .then(() => {
+          // Clear the authentication token on the client side (e.g., from local storage)
+          localStorage.removeItem('authToken');
+          console.log("logout");
+          // You may want to perform additional logout actions, such as redirecting to the login page.
+        })
+        .catch(error => {
+          // Handle logout errors
+        });
+    },
 
     async fetchuser() {
       try {

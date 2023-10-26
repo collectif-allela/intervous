@@ -68,6 +68,16 @@ export default {
       // Display an error message or handle the error as needed.
     }
   }
+  },
+  computed: {
+  authToken() {
+    return localStorage.getItem('authToken');
+    console.log(localStorage.getItem('authToken'));
+  },
+  isAuthenticated() {
+    console.log(this.authToken)
+    return !!this.authToken;
   }
+}
 }
 </script>
