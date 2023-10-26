@@ -37,7 +37,7 @@
       </button>
       </div>
     </div>
-    <CommentsSection  @reloadComments="fetchComments()" :actuality = "actualities[activeTab]" :activeTab="activeTab" :comments="comments"/>
+    <CommentsSection  @reloadComments="pushComment" :actuality = "actualities[activeTab]" :activeTab="activeTab" :comments="comments"/>
 
   </div>
 </template>
@@ -74,7 +74,6 @@ export default {
     },
       async fetchComments() {
         try {
-          console.log("Entered function fetchComments");
           const index = this.activeTab;
           const actualityId = this.actualities[index].id;
           const response = await this.$axios.get(`/api/app/comments?actuality_id=${actualityId}`);
@@ -88,6 +87,12 @@ export default {
         } catch (error) {
           console.error('Error fetching comments:', error);
         }
+      },
+      async pushComment(newComment) {
+      // Update the comments prop here
+      console.log("Recieved $event from Input grandchild, pushing comment into array");
+      console.log("Comment Data: " + newComment);
+      this.comments.push(newComment);
       },
     },
 

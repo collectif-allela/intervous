@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_25_162858) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_095801) do
   create_table "actualities", force: :cascade do |t|
     t.string "title"
     t.text "video_url"
@@ -65,6 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_162858) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "content_id"
+    t.integer "user_id"
+    t.string "content_type"
+    t.string "vote_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_votes_on_content_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "actualities", "posts"
