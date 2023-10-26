@@ -10,6 +10,7 @@ import CreatePost from "../views/CreatePost.vue";
 import EditPost from "../views/EditPost.vue";
 import CreateActuality from "../views/CreateActuality.vue";
 import EditActuality from "../views/EditActuality.vue";
+import Notifications from "../views/Notifications.vue";
 
 
 const routes = [
@@ -42,6 +43,11 @@ const routes = [
     path: "/connection",
     name: "Connection",
     component: Connection,
+  },
+  {
+    path: "/notifications",
+    name: "Notifications",
+    component: Notifications,
   },
   {
     path: "/post/:id", // View for viewing a single post

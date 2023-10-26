@@ -1,9 +1,12 @@
 <script setup>
 </script>
 <template>
-<section class="relative mx-auto h-[800px] w-[390px]">
+<div class="w-full flex justify-center mt-6">
+  <logo/>
+</div>
+<section class="mx-auto relative max-w-[390px]">
   <div class="h-full w-full bg-beige">
-    <div class="grid w-full grid-cols-3 gap-1 px-4 py-10">
+    <div class="grid w-full grid-cols-3 gap-[1px] px-4 py-10">
       <div v-for="(post, index) in posts" :key="post.id" class="relative">
         <h2 :class="postClass(index)" class="absolute z-10 uppercase italic leading-none text-beige">
           <span class="break-words bg-blue px-1">L'actu</span><br />
@@ -17,7 +20,11 @@
 </template>
 
 <script>
+
+import logo from '../assets/logo.vue';
+
 export default {
+  components: { logo },
   data() {
     return {
       posts: [],

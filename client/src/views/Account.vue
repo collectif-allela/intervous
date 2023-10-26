@@ -1,29 +1,42 @@
 <template>
-  <section class="relative mx-auto h-[800px] w-[390px]">
-    <div class="h-full w-full bg-beige">
-      <div class="flex h-full flex-col justify-center items-center">
-        <div class="mx-auto mb-10">
-          <h1 class="inline-block bg-blue px-3 text-2xl uppercase italic text-beige">Compte</h1>
+  <section class="mx-auto relative max-w-[390px]">
+    <div class="flex h-full flex-col">
+      <div class="flex h-full flex-col">
+        <div class="flex min-h-[30%] border border-black">
+          <div class="flex min-w-[100px] h-[100px] bg-slate-400 rounded-full m-auto"></div>
+          <ul class="flex w-full flex-col">
+            <li class="flex h-full w-full items-center border border-l-black border-b-black p-2">
+              <p class="h-fit text-base">TIMOTHY RICK</p>
+            </li>
+            <li class="flex h-full w-full items-center border border-l-black p-2">
+              <p class="h-fit text-base">@TIMOTHY RICK</p>
+            </li>
+          </ul>
         </div>
-        <form @submit.prevent="updateUser" class="mb-6 mx-6 flex max-w-lg flex-col gap-y-3">
-          <div>
-            <label for="email" class="mb-1 text-sm uppercase italic">Pseudo</label>
-            <input class="w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="nickname" id="nickname" v-model="user.nickname" required />
-          </div>
-          <div>
-            <label for="email" class="mb-1 text-sm uppercase italic">Email</label>
-            <input class="w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="email" id="email" v-model="user.email" required />
-          </div>
-          <div>
-            <label for="email" class="mb-1 text-sm uppercase italic">Mot de passe</label>
-            <input class="w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="password" id="password" v-model="user.password" required />
-          </div>
-          <div>
-            <label for="email" class="mb-1 text-sm uppercase italic">Confirmation mot de passe</label>
-            <input class="mb-5 w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="password" id="password_confirmation" v-model="user.password_confirmation" required />
-          </div>
-          <button class="border border-black mx-auto inline-block bg-blue px-6 py-1 uppercase italic text-beige" type="submit">S'iscrire</button>
-        </form>
+        <ul class="flex h-full w-full flex-col border border-b-black border-l-black border-r-black">
+
+          <li class="flex h-full items-center px-2 justify-between border border-b-black ">
+            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">paramétres</p>
+            <button class="w-1/5 ">X</button>
+          </li>
+
+           <li class="flex h-full items-center px-2 justify-between border border-b-black ">
+            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">CONFIDENTIALITE</p>
+            <button class="w-1/5 ">X</button>
+          </li>
+           <li class="flex h-full items-center px-2 justify-between border border-b-black ">
+            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">STATISTIQUES</p>
+            <button class="w-1/5 ">X</button>
+          </li>
+           <li class="flex h-full items-center px-2 justify-between  ">
+            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">favoris</p>
+            <button class="w-1/5 ">X</button>
+          </li>
+       
+        </ul>
+      </div>
+      <div class="flex h-full items-end">
+        <button class="w-full border border-black p-5 text-start uppercase">Déconexion</button>
       </div>
     </div>
   </section>

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex h-[80vh] w-full items-end justify-start">
+  <div class="relative flex h-[70vh] w-full items-end justify-start">
     <h2 class="text-beige z-10 mb-10 ml-[20px] text-5xl uppercase italic leading-none">
       <span class="bg-blue break-words px-3">L'actu</span><br />
       <span class="bg-blue ml-[20px] px-3">du {{date}}</span>
