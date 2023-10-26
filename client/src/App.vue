@@ -1,5 +1,5 @@
 <template class="App w-full">
-  <div id="nav" class=" w-full bg-beige sticky top-0 flex justify-evenly p-4 ">
+  <div id="nav" class=" w-full bg-beige sticky bottom-0 flex justify-evenly p-4 ">
     <router-link
       to="/account"
       class="text-black font-semibold hover:text-blue-400 px-2 py-1 mx-2"
