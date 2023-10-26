@@ -26,7 +26,7 @@ export default {
     return {
       commentData: {
         body: '',
-        actuality_id: this.actualityId, // Associate the comment with a post
+        actuality_id: '', // Associate the comment with a post
       },
       isAuthenticated: false, // Flag to track user authentication
     };
@@ -42,16 +42,28 @@ export default {
     // Check user authentication status and set the `isAuthenticated` flag accordingly.
     // You can use Vuex or another state management system for this.
     this.isAuthenticated = true; // Set it based on your actual authentication status.
+
   },
   methods: {
 
     async createComment() {
       if (this.isAuthenticated) {
         try {
-          const response = await this.$axios.post(`api/app/comments`, this.commentData); // Replace with your API endpoint
-          // Handle the success case
+          this.commentData.actuality_id = this.actualityId;
+          const response = await this.$axios.post(`api/app/comments`, this.commentData);
+          // Assuming response.data contains the newly created comment
+          console.log('API Response:', response);
+          // Check the structure of response.data
+          if (response.data) {
+            const newComment = response.data;
+            // Emit the "addComment" event with the new comment data
+            this.$emit('addComment', newComment);
+            console.log('Emmited comment data to parent');
+          } else {
+            console.log('Response data is undefined or empty.');
+          }
         } catch (error) {
-          console.error('Error creating comment:', error);
+          console.log('Error creating comment:', error);
         }
       } else {
         // If the user is not authenticated, you can show a pop-up/modal or redirect to the Sign-In/Sign-Up component.
@@ -61,15 +73,11 @@ export default {
         this.$router.push({ name: 'SignIn' });
       }
     },
-    async reloadComments(actualityId){
-      this.commentData.body = '';
-      await this.$emit('reloadComments');
-      console.log("Emited change, reloaded comments")
-    },
     async handleClick(){
       try {
         await this.createComment();
-        await this.reloadComments(this.actualityId)
+        this.commentData.body = '';
+        // await this.reloadComments(this.actualityId)
       } catch (error) {
         console.log("Error inside comment creation" + error)
       }

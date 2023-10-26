@@ -1,4 +1,3 @@
-
 class Api::App::PostsController < ApplicationController
   before_action :set_post, only: %i[ show update destroy ]
 

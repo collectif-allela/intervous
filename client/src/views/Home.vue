@@ -3,7 +3,6 @@
     <input type="date" v-model="selectedDate" @change="fetchData"
     class="text-black w-full text-center p-1 bg-beige border border-solid border-black"/>
     <div v-if="post" class="justify-center flex flex-col gap-4">
-      <h1 class="text-center ">Today's Post</h1>
       <MainVideo :date = "post.video_date"></MainVideo>
       <p>{{ post.video_url }}</p>
       <!-- Actualities Tabs -->
