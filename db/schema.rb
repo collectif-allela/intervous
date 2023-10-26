@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_24_145107) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_25_162858) do
   create_table "actualities", force: :cascade do |t|
     t.string "title"
     t.text "video_url"
