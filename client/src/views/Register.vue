@@ -22,7 +22,7 @@
             <label for="email" class="mb-1 text-sm uppercase italic">Confirmation mot de passe</label>
             <input class="mb-5 w-full border border-solid border-black bg-beige p-1 text-sm text-black focus:border-blue focus:outline-none focus:ring-0" type="password" id="password_confirmation" v-model="user.password_confirmation" required />
           </div>
-          <button class="border border-black mx-auto inline-block bg-blue px-6 py-1 uppercase italic text-beige" type="submit">S'iscrire</button>
+          <button class="border border-black mx-auto inline-block bg-blue px-6 py-1 uppercase italic text-beige" type="submit">S'inscrire</button>
         </form>
         <router-link class="underline text-black" to="/connection">Se connecter</router-link>
       </div>
