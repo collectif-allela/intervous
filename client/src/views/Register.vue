@@ -59,7 +59,9 @@ export default {
         },
       });
 
-      console.log(response);
+      console.log(response.headers);
+      console.log(response.headers.get('authorization'));
+      console.log(response.headers['authorization']);
       // Check if the registration was successful based on the API response
       if (response.status === 200) {
         // Registration successful, you can redirect the user or show a success message
