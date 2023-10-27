@@ -1,6 +1,6 @@
 class Api::App::PostsController < ApplicationController
-  before_action :authenticate_api_app_user!, only: %i[ create update destroy ]
-  before_action :check_admin!, only: %i[ create update destroy ]
+  # before_action :authenticate_api_app_user!, only: %i[ create update destroy ]
+  # before_action :check_admin!, only: %i[ create update destroy ]
   before_action :set_post, only: %i[ show update destroy ]
 
   # GET /posts
