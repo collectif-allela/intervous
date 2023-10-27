@@ -43,7 +43,7 @@ export default {
         nickname: '',
         password: '',
         password_confirmation: '',
-
+        confirm_success_url: 'https://devise-token-auth.gitbook.io/devise-token-auth/usage/overrides#registrations-controller'
       }
     }
   },
@@ -58,6 +58,9 @@ export default {
           'Content-Type': 'application/x-www-form-urlencoded',
     },
     });
+    const authToken = response.headers['Authorization']; // Extract the token from the response headers
+    console.log('my token : ' + authToken);
+    localStorage.setItem('authToken', authToken);
 
       console.log(response);
       // Check if the registration was successful based on the API response

@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       loading: true,
-      isAdmin: false,
+      isAuth: false,
       post: {
         created_at: '', // Define default values for properties you access
         video_url: '',
@@ -102,10 +102,25 @@ export default {
         console.error("Error fetching data:", error);
       }
     },
+    async getToken() {
+      console.log("Getting Token");
+      try {
+        const token = response.headers.get('Authorization');
+        console.log("Token: " + token);
+        if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        this.isAuth = true;
+      }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
 
   },
   mounted() {
     this.fetchData();
+    this.getToken();
+
   }
   // computed: {
   //   userHasPermissionToDelete() {
