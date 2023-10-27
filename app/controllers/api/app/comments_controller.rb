@@ -1,6 +1,6 @@
 class Api::App::CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show update destroy ]
-  # before_action :authenticate_api_app_user!, only: %i[ create update destroy ]
+  before_action :authenticate_api_app_user!, only: %i[ create update destroy ]
 
   # GET /comments
   def index

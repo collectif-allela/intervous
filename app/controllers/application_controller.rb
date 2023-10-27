@@ -13,7 +13,6 @@ class ApplicationController < ActionController::API
   private
 
   def check_admin!
-    debugger
     unless current_api_app_user.admin?
       render json: { errors: ['You are not authorized to perform this action'] }, status: :unauthorized
     end
