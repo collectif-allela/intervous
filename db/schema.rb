@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_095801) do
     t.datetime "updated_at", null: false
     t.integer "actuality_id"
     t.integer "user_id"
+    t.integer "like"
+    t.integer "dislike"
     t.index ["actuality_id"], name: "index_comments_on_actuality_id"
   end
 
