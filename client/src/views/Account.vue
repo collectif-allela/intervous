@@ -19,26 +19,26 @@
         <ul class="flex h-full w-full flex-col border border-b-black border-l-black border-r-black">
 
           <li class="flex h-full items-center px-2 justify-between border border-b-black ">
-            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">paramétres</p>
-            <button class="w-1/5 ">X</button>
+            <p class="py-3 flex items-center h-full w-4/5 uppercase border-r border-black">paramétres</p>
+            <button class="w-1/5 flex justify-center"><arrow/></button>
           </li>
 
            <li class="flex h-full items-center px-2 justify-between border border-b-black ">
-            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">CONFIDENTIALITE</p>
-            <button class="w-1/5 ">X</button>
+            <p class="py-3 flex items-center h-full w-4/5 uppercase border-r border-black">CONFIDENTIALITE</p>
+            <button class="w-1/5 flex justify-center"><arrow/></button>
           </li>
            <li class="flex h-full items-center px-2 justify-between border border-b-black ">
-            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">STATISTIQUES</p>
-            <button class="w-1/5 ">X</button>
+            <p class="py-3 flex items-center h-full w-4/5 uppercase border-r border-black">STATISTIQUES</p>
+            <button class="w-1/5 flex justify-center"><arrow/></button>
           </li>
            <li class="flex h-full items-center px-2 justify-between  ">
-            <p class="flex items-center h-full w-4/5 uppercase border-r border-black">favoris</p>
-            <button class="w-1/5 ">X</button>
+            <p class="py-3 flex items-center h-full w-4/5 uppercase border-r border-black">favoris</p>
+            <button class="w-1/5 flex justify-center"><arrow/></button>
           </li>
        
         </ul>
       </div>
-      <div class="flex h-full items-end">
+      <div class="flex h-full items-end mt-36">
         <button  @click="logout" class="w-full border border-black p-5 text-start uppercase">Déconexion</button>
       </div>
     </div>
@@ -48,10 +48,12 @@
 <script>
 import axios from 'axios';
 import logo from '../assets/logo.vue';
+import arrow from '../assets/arrow.vue';
 import querystring from 'querystring';
 
 export default {
-  components: { logo },
+  components: { logo,
+  arrow },
   data() {
     return {
       user : {
