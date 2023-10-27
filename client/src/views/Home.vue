@@ -7,7 +7,6 @@
     class="text-black w-full text-center p-1 bg-beige border border-solid border-black"/>
     <div v-if="post" class="justify-center flex flex-col gap-4">
       <MainVideo :date = "post.video_date"></MainVideo>
-      <p>{{ post.video_url }}</p>
       <!-- Actualities Tabs -->
       <div v-if="actualities && actualities.length > 0">
           <actualities-tab

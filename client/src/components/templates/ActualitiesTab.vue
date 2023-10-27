@@ -1,5 +1,5 @@
 <template>
-  <div class="actuality-box border-t  border-black ">
+  <div class="actuality-box border-t  border-black mb-16">
     <div class="flex justify-between border-r  border-black">
       <!-- Tab Buttons -->
       <div
