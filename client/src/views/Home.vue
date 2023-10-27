@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full justify-center flex flex-col gap-y-4 pb-20">
+  <div class="h-full w-full max-w-2xl	m-auto justify-center flex flex-col gap-y-4 pb-20">
     <div class="w-full flex items-center justify-center mb-3 mt-10">
       <Logo/>
     </div>
@@ -61,6 +61,7 @@ export default {
         const response = await this.$axios.get('/api/app/posts', {
           params: { published_at: this.selectedDate },
         });
+        console.log("Post published at: " + this.post.video);
         this.post = response.data[0];
         this.post.postId = response.data[0].id;
         console.log("Post: " + this.post.postId);
@@ -101,24 +102,24 @@ export default {
         console.error("Error fetching data:", error);
       }
     },
-    async getToken() {
-      console.log("Getting Token");
-      try {
-        const token = response.headers.get('Authorization');
-        console.log("Token: " + token);
-        if (token) {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        this.isAuth = true;
-      }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    },
+    // async getToken() {
+    //   console.log("Getting Token");
+    //   try {
+    //     const token = response.headers.get('Authorization');
+    //     console.log("Token: " + token);
+    //     if (token) {
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    //     this.isAuth = true;
+    //   }
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //   }
+    // },
 
   },
   mounted() {
     this.fetchData();
-    this.getToken();
+    // this.getToken();
 
   }
   // computed: {

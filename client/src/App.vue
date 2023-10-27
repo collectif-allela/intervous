@@ -1,4 +1,4 @@
-<template class="App w-full">
+<template class="App max-w-2xl">
 <Navbar/>
   <router-view class="px-4 bg-beige" />
 </template>

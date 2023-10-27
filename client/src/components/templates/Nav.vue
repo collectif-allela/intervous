@@ -1,5 +1,5 @@
 <template>
-<div id="nav" class="uppercase border-t-[1px] border-black text-[10px] text-black border-top w-full fixed z-50 bottom-0 flex justify-between p-3 bg-beige">
+<div id="nav" class="uppercase border-t-[1px] border-black text-[10px] text-black border-top w-full fixed z-50 bottom-0 flex justify-around p-3 bg-beige  mx-auto">
     <router-link
       to="/"
       class="hover:text-blue-400 px-2 py-1 flex flex-col justify-center items-center gap-y-1"
@@ -56,7 +56,7 @@ export default {
       // You may want to perform additional logout actions, such as redirecting to the login page.
     },
   },
-  components: { 
+  components: {
     archiveSVG,
     homeSVG,
     profileSVG,

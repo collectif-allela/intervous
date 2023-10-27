@@ -4,10 +4,10 @@
     <form @submit.prevent="createActuality" class="flex flex-col gap-4">
       <label for="title">Title:</label>
       <input type="text" id="title" v-model="actualityData.title" class="text-black">
-      <label for="summary">Summary:</label>
-      <input type="text" id="summary" v-model="actualityData.summary" class="text-black">
-      <!-- <label for="body">Body:</label>
-      <input type="text" id="body" v-model="actualityData.body" class="text-black"> -->
+      <!-- <label for="summary">Summary:</label>
+      <input type="text" id="summary" v-model="actualityData.summary" class="text-black"> -->
+      <label for="body">Body:</label>
+      <input type="text" id="body" v-model="actualityData.body" class="text-black">
       <!-- <label for="videoUrl">Video Url:</label>
       <input type="text" id="videoUrl" v-model="actualityData.video_url" class="text-black">
       <label for="tag">Tag:</label>

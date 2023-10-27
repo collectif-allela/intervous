@@ -1,12 +1,12 @@
 <template >
-  <div class="input-box h-fit w-full bg-blue ">
+  <div class="flex justify-center input-box h-fit w-full bg-blue ">
     <div class="flex items-center space-x-4 p-4">
       <!-- Profile Image -->
       <div v-if='isAuthenticated' class=" h-12 w-12 overflow-hidden rounded-full">
         <img src="https://media.discordapp.net/attachments/898466011391610890/1166737937027825694/nsey-benajah-5_gku5Usbzk-unsplash.jpg?" alt="User Profile Image" />
       </div>
       <!-- Comment Box -->
-      <div>
+      <div class="w-full">
         <form @submit.prevent="handleClick" class="flex justify-around">
           <div class="flex gap-4">
             <input id="body" v-model="commentData.body" class="bg-blue text-white h-full p-4 outline-none focus:border-transparent" type="text" placeholder="Ajouter un commentaire..." />

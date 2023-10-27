@@ -7,7 +7,7 @@
 <section class="mx-auto relative max-w-[390px]">
   <div class="h-full w-full bg-beige">
     <div class="grid w-full grid-cols-3 gap-[1px] px-4 py-10">
-      <div v-for="(post, index) in posts" :key="post.id" class="relative">
+      <div v-for="(post, index) in posts" @click="redirect()" :key="post.id" class="relative cursor-pointer">
         <h2 :class="postClass(index)" class="absolute z-10 uppercase italic leading-none text-beige">
           <span class="break-words bg-blue px-1">L'actu</span><br />
           <span class="ml-[3px] bg-blue px-1">du {{ post.date }}</span>
@@ -36,6 +36,9 @@ export default {
     this.fetchPosts();
   },
   methods: {
+    async redirect(postID){
+      this.$router.push({ name: 'Home' });
+    },
     async fetchPosts() {
       try {
         const response = await this.$axios.get('/api/app/posts'); // Replace with your API endpoint
@@ -58,4 +61,3 @@ export default {
   }
 };
 </script>
-

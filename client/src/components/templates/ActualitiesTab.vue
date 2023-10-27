@@ -17,7 +17,6 @@
       <div class="" v-for="(actuality, index) in actualities" :key="index" v-show="activeTab === index">
         <h2 class="text-lg font-bold p-4 uppercase italic bg-blue text-white">{{ actuality.title }}</h2>
         <div class="p-4">
-          <p class="text-gray-600">{{ actuality.summary }}</p>
           <p class="text-gray-600">{{ actuality.body }}</p>
           <p class="text-gray-600">{{ actuality.tag }}</p>
         </div>
