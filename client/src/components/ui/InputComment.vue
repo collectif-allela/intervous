@@ -2,7 +2,7 @@
   <div class="input-box h-fit w-full bg-blue ">
     <div class="flex items-center space-x-4 p-4">
       <!-- Profile Image -->
-      <div v-if='isAuthenticated' class="flex-1 h-12 w-12 overflow-hidden rounded-full">
+      <div v-if='isAuthenticated' class=" h-12 w-12 overflow-hidden rounded-full">
         <img src="https://media.discordapp.net/attachments/898466011391610890/1166737937027825694/nsey-benajah-5_gku5Usbzk-unsplash.jpg?" alt="User Profile Image" />
       </div>
       <!-- Comment Box -->

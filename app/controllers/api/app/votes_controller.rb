@@ -1,5 +1,5 @@
 class Api::App::VotesController < ApplicationController
-  before_action :authenticate_api_app_user!, only: %i[ create update destroy ]
+  #before_action :authenticate_api_app_user!, only: %i[ create update destroy ]
   before_action :set_vote, only: %i[ show update destroy ]
 
   # GET /votes

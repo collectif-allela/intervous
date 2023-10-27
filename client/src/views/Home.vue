@@ -44,7 +44,7 @@ export default {
       loading: true,
       isAuth: false,
       post: {
-        created_at: '', // Define default values for properties you access
+        published_at: '', // Define default values for properties you access
         video_url: '',
         video_date:'',
         postId: null,
@@ -59,7 +59,7 @@ export default {
       try {
         // const formattedDate = new Date(this.selectedDate).toISOString();
         const response = await this.$axios.get('/api/app/posts', {
-          params: { created_at: this.selectedDate },
+          params: { published_at: this.selectedDate },
         });
         this.post = response.data[0];
         this.post.postId = response.data[0].id;
