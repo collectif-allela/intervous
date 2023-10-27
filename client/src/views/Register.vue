@@ -39,17 +39,18 @@ export default {
     return {
       user : {
         email: '',
-        name: '', 
+        name: '',
         nickname: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+
       }
     }
   },
   methods: {
     async registerUser() {
     try {
-      
+
       console.log(this.user);
 
       const response = await axios.post('/api/app/auth', this.user, {
