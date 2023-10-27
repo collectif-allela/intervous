@@ -11,7 +11,8 @@
       <!-- <label for="videoUrl">Video Url:</label>
       <input type="text" id="videoUrl" v-model="actualityData.video_url" class="text-black">
       <label for="tag">Tag:</label>
-      <input type="text" id="tag" v-model="actualityData.tag" class="text-black">      <button type="submit">Create Actuality</button> -->
+      <input type="text" id="tag" v-model="actualityData.tag" class="text-black"> -->   
+      <button type="submit">Create Actuality</button> 
     </form>
   </div>
 </template>

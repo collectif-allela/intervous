@@ -1,4 +1,6 @@
 class Api::App::ActualitiesController < ApplicationController
+  before_action :authenticate_api_app_user!, only: %i[ create update destroy ]
+  before_action :check_admin!, only: %i[ create update destroy ]
   before_action :set_actuality, only: %i[ show update destroy ]
 
   # GET /actualities
