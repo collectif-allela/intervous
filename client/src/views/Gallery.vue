@@ -4,13 +4,14 @@
 <div class="w-full flex justify-center mt-10">
   <logo/>
 </div>
-<section class="mx-auto relative max-w-[390px]">
+<section class="mx-auto relative max-w-[390px] mb-20">
   <div class="h-full w-full bg-beige">
+    <h1 class="text-2xl font-semibold mb-4 text-center">Nos actualités</h1>
     <div class="grid w-full grid-cols-3 gap-[1px] px-4 py-10">
       <div v-for="(post, index) in posts" @click="redirect()" :key="post.id" class="relative cursor-pointer">
         <h2 :class="postClass(index)" class="absolute z-10 uppercase italic leading-none text-beige">
           <span class="break-words bg-blue px-1">L'actu</span><br />
-          <span class="ml-[3px] bg-blue px-1">du {{ post.date }}</span>
+          <span class="ml-[3px] bg-blue px-1">du {{ formattedDate(post.published_at) }}</span>
         </h2>
         <img class="object-cover z-0 h-[180px] w-[120px] min-h[180px]" :src="post.cover_img_url" alt="" />
       </div>
@@ -56,6 +57,14 @@ export default {
         // Calculate the class to apply based on the index
         const classIndex = index % this.classes.length;
       return this.classes[classIndex];
+      };
+    },
+    formattedDate() {
+      return (date) => {
+        const day = date.substring(8, 10);
+        const month = date.substring(5, 7);
+        // Return the formatted date
+        return `${day}/${month}`;
       };
     },
   }

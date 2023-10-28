@@ -6,7 +6,9 @@
     <div class="flex h-full flex-col">
       <div class="flex h-full flex-col">
         <div class="flex min-h-[30%] border border-black">
-          <div class="flex min-w-[100px] h-[100px] bg-slate-400 rounded-full m-auto"></div>
+            <div class=" flex h-16 w-16  overflow-hidden rounded-full m-auto">
+              <img src="https://media.discordapp.net/attachments/898466011391610890/1166737937027825694/nsey-benajah-5_gku5Usbzk-unsplash.jpg?" alt="User Profile Image" />
+            </div>
           <ul class="flex w-full flex-col">
             <li class="flex h-full w-full items-center border border-l-black border-b-black p-2">
               <p class="h-fit text-base">TIMOTHY RICK</p>
@@ -35,7 +37,7 @@
             <p class="py-3 flex items-center h-full w-4/5 uppercase border-r border-black">favoris</p>
             <button class="w-1/5 flex justify-center"><arrow/></button>
           </li>
-       
+
         </ul>
       </div>
       <div class="flex h-full items-end mt-36">
@@ -58,7 +60,7 @@ export default {
     return {
       user : {
         email: '',
-        name: '', 
+        name: '',
         nickname: '',
         password: '',
         password_confirmation: ''
@@ -94,7 +96,7 @@ export default {
 
     async updateUser() {
     try {
-      
+
       const userId = this.$route.params.id; // Assuming you're using Vue Router
       const response = await axios.put(`/api/app/users/${userId}`, this.user);
       // Optionally, you can handle the response, e.g., show a success message or navigate back to the Dashboard

@@ -1,19 +1,18 @@
 <template>
   <div class="">
-
     <h1 class="text-2xl font-semibold mb-4">Dashboard</h1>
     <router-link to='/post/create'>
         <button class="px-4 py-2 bg-blue text-white rounded-md hover:bg-green-600">
           Create new Post
         </button>
       </router-link>
-    <h2>All posts</h2>
+    <h2 class='text-2xl font-semibold my-4'>All posts</h2>
     <div v-if="loading" class="text-gray-600">Loading...</div>
-    <ul v-else class="flex items-center gap-4 border border-solid border-red w-full">
+    <ul v-else class="grid grid-cols-1 auto-rows-max mb-20 gap-4 w-full">
       <li v-for="post in posts" :key="post.id" class=" flex mb-4 p-4 bg-white w-fit shadow-md rounded-md">
         <div class="flex flex-col gap-4 items-center justify-between">
           <h2 class="text-lg font-semibold text-black">Video URL: {{ post.video_url }}</h2>
-          <div class="space-x-4">
+          <div class=" flex justify-around w-full space-x-4">
             <router-link :to="{ name: 'Post', params: { id: post.id } }">
               <button class="px-4 py-2 bg-blue text-white rounded-md hover:bg-blue">
                 See

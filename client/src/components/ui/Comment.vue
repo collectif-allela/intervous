@@ -21,7 +21,7 @@
             </button>
             <span>{{dislikes}}</span>
             <button @click="unlikeComment" :fillColor="dislikeFillColor" class="mr-2 flex items-center gap-2 " :class="dislikeButtonClass">
-              <Dislike/>
+              <Dislike :fillColor="dislikeFillColor"/>
             </button>
           </div>
         </div>
@@ -45,8 +45,8 @@ export default {
       },
       likes: '',
       dislikes: '',
-      likeFillColor: 'gray', // Initial fill color for Like button // Initial class for Like button
-      dislikeFillColor: 'gray', // Initial class for Dislike button
+      likeFillColor: 'none', // Initial fill color for Like button // Initial class for Like button
+      dislikeFillColor: 'none', // Initial class for Dislike button
       userVoted: false, // Set this to true if the user has already liked the comment
     };
   },
@@ -168,7 +168,7 @@ export default {
       if (!this.userVoted) {
         // Make an API call to like the comment
         try {
-          this.dislikeFillColor = 'blue';
+          this.dislikeFillColor = 'gray';
           this.data.vote_type = 'dislike';
           const response = await this.$axios.post(`api/app/votes`, this.data);
 

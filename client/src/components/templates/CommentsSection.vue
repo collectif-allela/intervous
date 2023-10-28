@@ -3,18 +3,18 @@
       <div class="sticky bg-blue text-white p-5 top-0 ">
           <h3 class="text-center uppercase italic">Commentaires</h3>
       </div>
-      <div v-if ="comments && comments.length >0" class="flex flex-col items-center">
+      <div v-if ="comments && comments.length >0" class="flex flex-col">
         <!-- Comments from actuality -->
         <div v-for="(comment, index) in comments.slice(0, commentsToShow)" class="w-full" >
           <!-- :userName="commen.user" -->
           <Comment profileImage= "https://media.discordapp.net/attachments/898466011391610890/1166737937027825694/nsey-benajah-5_gku5Usbzk-unsplash.jpg?" :timestamp= "comment.created_at" :commentText = comment.body :commentId = comment.id />
         </div>
         <button v-if="comments.length > commentsToShow" @click="loadMoreComments" class="mt-2 mx-auto text-center">Voir plus</button>
-
         <InputComment :actualityId = actuality.id @addComment="passComment"/>
       </div>
       <div v-else>
-        <h3 class="text-center">Soyez le premiere a commenter !</h3>
+        <h3 class="text-center py-4 text-xl font-semibold italic">Pas encore des commentaires...</h3>
+        <p class="text-center  pb-8">Soyez le premier !</p>
         <InputComment :actualityId = actuality.id @addComment="passComment"/>
       </div>
     </div>

@@ -10,7 +10,7 @@
         <form @submit.prevent="handleClick" class="flex justify-around">
           <div class="flex gap-4">
             <input id="body" v-model="commentData.body" class="bg-blue text-white h-full p-4 outline-none focus:border-transparent" type="text" placeholder="Ajouter un commentaire..." />
-            <button type="submit" class="text-white"><Arrow/></button>
+            <button type="submit" class="text-white"><CommentArrow/></button>
           </div>
         </form>
      </div>
@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import Arrow from "../../assets/Arrow.vue"
+import CommentArrow from "../../assets/CommentArrow.vue"
 export default {
   props: {
     actualityId: Number, // Assuming you have a postId prop to associate comments with a post
@@ -45,7 +45,7 @@ export default {
     this.isAuthenticated = true; // Set it based on your actual authentication status.
 
   },
-  components: { Arrow},
+  components: { CommentArrow},
   methods: {
 
     async createComment() {

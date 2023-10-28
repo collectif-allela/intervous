@@ -12,7 +12,9 @@
       <input type="text" id="videoUrl" v-model="actualityData.video_url" class="text-black">
       <label for="tag">Tag:</label>
       <input type="text" id="tag" v-model="actualityData.tag" class="text-black"> -->
-      <button type="submit">Create Actuality</button>
+      <button type="submit" class="px-4 py-2 bg-blue text-white rounded-md hover:bg-green-600">
+        Ajouter actualité
+      </button>
     </form>
   </div>
 </template>

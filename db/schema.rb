@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_10_26_095801) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "actualities", force: :cascade do |t|
     t.string "title"
     t.text "video_url"
@@ -19,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_095801) do
     t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "post_id", null: false
+    t.bigint "post_id", null: false
     t.index ["post_id"], name: "index_actualities_on_post_id"
   end
 

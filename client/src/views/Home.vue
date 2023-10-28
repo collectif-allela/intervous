@@ -19,11 +19,11 @@
         ></actualities-tab>
       </div>
       <div v-else>
-      <h2>There are no post actualities or there is a problem.</h2>
+      <h2>Il n'y a pas encore des actualités pour ce post</h2>
       </div>
     </div>
     <div v-else>
-      <h2>There are no posts for this date, choose another one</h2>
+      <h2>Il n'y a pas des actualités pour ce post ou une erreur s'est produit</h2>
     </div>
   </div>
 </template>
